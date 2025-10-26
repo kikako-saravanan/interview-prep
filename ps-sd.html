@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architect's Mind: Practical Mastery Blueprint</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #a8edea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            opacity: 0.85;
+            position: relative;
+            z-index: 1;
+        }
+
+        .learning-framework {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .framework-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #a8edea;
+            text-align: center;
+        }
+
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .framework-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .framework-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .framework-percentage {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #a8edea;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .framework-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .framework-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .main-content {
+            background: white;
+            margin-top: -50px;
+            border-radius: 30px 30px 0 0;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .category {
+            padding: 4rem 0;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .category:last-child {
+            border-bottom: none;
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .category-timeline {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .category-description {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .projects-section {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f2ff 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid #d0e0ff;
+        }
+
+        .projects-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .project-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-features {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-features li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            color: #555;
+        }
+
+        .project-features li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid #e8ebf7;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+        }
+
+        .book-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .book-week {
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .book-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .book-author {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .learning-split {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #f8f9ff;
+            border-radius: 10px;
+        }
+
+        .split-item {
+            text-align: center;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e0e5ff;
+        }
+
+        .split-percentage {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .split-label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        .book-principle {
+            background: linear-gradient(135deg, #f0f4ff, #fef0ff);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 3px solid #764ba2;
+        }
+
+        .principle-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #764ba2;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .principle-text {
+            color: #555;
+            font-style: italic;
+        }
+
+        .teaching-activities {
+            background: #fff5e6;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-left: 3px solid #ff9800;
+        }
+
+        .teaching-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ff9800;
+            margin-bottom: 0.5rem;
+        }
+
+        .teaching-list {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .success-metrics {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .metric-item {
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #a8edea;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .framework-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .learning-split {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">🏗️ Architect's Mind</h1>
+            <p class="hero-subtitle">From Code to Systems: The Practical Mastery Blueprint</p>
+            <p class="hero-description">
+                A transformative 42-week journey that combines deep reading with hands-on building and teaching.
+                Not just theory—70% practical application ensures every concept becomes a skill you can demonstrate.
+            </p>
+
+            <div class="learning-framework">
+                <h3 class="framework-title">The 30-50-20 Learning Framework</h3>
+                <p style="opacity: 0.9; margin-bottom: 1.5rem; text-align: center;">
+                    Every book, every week follows this proven approach to transform knowledge into mastery
+                </p>
+                <div class="framework-grid">
+                    <div class="framework-item">
+                        <span class="framework-percentage">30%</span>
+                        <div class="framework-label">📚 Read</div>
+                        <div class="framework-desc">Deep study & note-taking</div>
+                    </div>
+                    <div class="framework-item">
+                        <span class="framework-percentage">50%</span>
+                        <div class="framework-label">🔨 Build</div>
+                        <div class="framework-desc">Projects & implementation</div>
+                    </div>
+                    <div class="framework-item">
+                        <span class="framework-percentage">20%</span>
+                        <div class="framework-label">🎓 Teach</div>
+                        <div class="framework-desc">Blog posts & sharing</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="success-metrics">
+                <h3 class="framework-title">What You'll Build in 42 Weeks</h3>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-number">50+</div>
+                        <div class="metric-label">Practical Projects</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">25+</div>
+                        <div class="metric-label">Blog Posts</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">500+</div>
+                        <div class="metric-label">DSA Problems</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">10+</div>
+                        <div class="metric-label">Design Docs</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">8</div>
+                        <div class="metric-label">Capstone Projects</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">1</div>
+                        <div class="metric-label">World-Class Portfolio</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="container">
+
+            <!-- Category A: Cognitive Foundations -->
+            <section class="category">
+                <div class="category-header">
+                    <span class="category-timeline">Weeks 1-6 (6 weeks)</span>
+                    <h2 class="category-title">🧠 Category A: Cognitive Foundations</h2>
+                    <p class="category-description">
+                        Master how your mind works before mastering systems. Understanding cognitive patterns, biases,
+                        and decision-making frameworks is the foundation for all technical excellence.
+                    </p>
+                </div>
+
+                <div class="projects-section">
+                    <h3 class="projects-title">🚀 Major Projects (2)</h3>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 1: Decision Journal Web App</div>
+                        <div class="project-description">
+                            Build a full-stack application to track and analyze decision-making patterns
+                        </div>
+                        <ul class="project-features">
+                            <li>Daily decision logging with context and outcomes</li>
+                            <li>System 1 vs System 2 thinking classification</li>
+                            <li>Cognitive bias detection engine</li>
+                            <li>Pattern analysis dashboard with visualizations</li>
+                            <li>Reflection prompts based on mental models</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 2: Mental Models Library</div>
+                        <div class="project-description">
+                            Create an interactive encyclopedia of 50+ mental models with real-world applications
+                        </div>
+                        <ul class="project-features">
+                            <li>Searchable database of mental models</li>
+                            <li>Interactive examples and simulations</li>
+                            <li>User-generated application stories</li>
+                            <li>Spaced repetition learning system</li>
+                            <li>Integration with decision journal</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="books-grid">
+                    <div class="book-card">
+                        <div class="book-week">Week 1</div>
+                        <div class="book-title">Thinking, Fast and Slow</div>
+                        <div class="book-author">by Daniel Kahneman</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Read & Notes</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Build Features</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Write Blog</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Understanding System 1 (fast, intuitive) vs System 2 (slow, analytical) thinking
+                                patterns
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "How Cognitive Biases Affect Your Code Reviews"<br>
+                                • Twitter thread: 10 biases every developer should know<br>
+                                • Record a 10-min video explaining System 1 vs System 2
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 2</div>
+                        <div class="book-title">The Model Thinker</div>
+                        <div class="book-author">by Scott E. Page</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Read & Notes</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Build Models</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Document</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Using multiple models to understand complex problems and make better predictions
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Applying Mental Models to System Architecture"<br>
+                                • Create interactive model demonstrations<br>
+                                • Present at local tech meetup
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 3-4</div>
+                        <div class="book-title">Thinking in Bets</div>
+                        <div class="book-author">by Annie Duke</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Study</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Implement</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Share</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Making decisions under uncertainty using probabilistic thinking
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Probabilistic Thinking in Tech Decisions"<br>
+                                • Case study: Analyzing past architectural decisions<br>
+                                • Workshop: Decision-making framework for teams
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 5-6</div>
+                        <div class="book-title">Super Thinking</div>
+                        <div class="book-author">by Gabriel Weinberg & Lauren McCann</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Learn</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Apply</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Teach</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Applying 300+ mental models to everyday decisions and problem-solving
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Mental Models Cheat Sheet for Engineers"<br>
+                                • Complete Mental Models Library project<br>
+                                • Create YouTube series: "Mental Model Monday"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category B: Problem-Solving Frameworks -->
+            <section class="category">
+                <div class="category-header">
+                    <span class="category-timeline">Weeks 7-12 (6 weeks)</span>
+                    <h2 class="category-title">🎯 Category B: Problem-Solving Frameworks</h2>
+                    <p class="category-description">
+                        Transform from coding solutions to engineering elegant systems. Learn structured approaches to
+                        break down complex problems and design solutions from first principles.
+                    </p>
+                </div>
+
+                <div class="projects-section">
+                    <h3 class="projects-title">🚀 Major Projects (2)</h3>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 1: Problem Decomposer Tool</div>
+                        <div class="project-description">
+                            Build an AI-assisted tool that breaks down complex problems using first principles
+                        </div>
+                        <ul class="project-features">
+                            <li>Natural language problem input</li>
+                            <li>Automated problem decomposition into sub-problems</li>
+                            <li>First principles analysis engine</li>
+                            <li>Solution pathway visualization</li>
+                            <li>Integration with LeetCode/HackerRank APIs</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 2: Algorithm Visualizer Suite</div>
+                        <div class="project-description">
+                            Create interactive visualizations for 50+ algorithms with step-by-step execution
+                        </div>
+                        <ul class="project-features">
+                            <li>Real-time algorithm execution visualization</li>
+                            <li>Complexity analysis dashboard</li>
+                            <li>Custom input testing playground</li>
+                            <li>Performance comparison tools</li>
+                            <li>Educational notes and explanations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="books-grid">
+                    <div class="book-card">
+                        <div class="book-week">Week 7</div>
+                        <div class="book-title">How to Solve It</div>
+                        <div class="book-author">by George Pólya</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Study Method</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Solve 50 Problems</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Document</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                The four-step problem-solving method: Understand, Plan, Execute, Review
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Pólya's Method Applied to LeetCode Problems"<br>
+                                • Create problem-solving template for teams<br>
+                                • YouTube: Solve 10 problems using the method
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 8-9</div>
+                        <div class="book-title">The Art of Problem Solving (Vol 1 & 2)</div>
+                        <div class="book-author">by Richard Rusczyk</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Learn Techniques</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Practice</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Teach</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Advanced problem-solving techniques for mathematical and logical challenges
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog series: "Problem-Solving Patterns in Algorithms"<br>
+                                • Create 20 educational problem sets<br>
+                                • Host weekly problem-solving session
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 10-11</div>
+                        <div class="book-title">Algorithms to Live By</div>
+                        <div class="book-author">by Brian Christian & Tom Griffiths</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Read</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Implement</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Share</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Applying computer science algorithms to everyday life decisions and problems
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Real-World Algorithm Applications"<br>
+                                • Build tools implementing covered algorithms<br>
+                                • Present: "Algorithms in Daily Engineering Work"
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 12</div>
+                        <div class="book-title">Cracking the Coding Interview</div>
+                        <div class="book-author">by Gayle Laakmann McDowell</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Read Strategies</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">60%</div>
+                                <div class="split-label">Solve Problems</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Mock Interviews</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Systematic approach to technical interviews and problem-solving under pressure
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Interview Problem-Solving Framework"<br>
+                                • Conduct 5 mock interviews for peers<br>
+                                • Create interview preparation guide
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category C: Systems Thinking -->
+            <section class="category">
+                <div class="category-header">
+                    <span class="category-timeline">Weeks 13-18 (6 weeks)</span>
+                    <h2 class="category-title">🌐 Category C: Systems Thinking</h2>
+                    <p class="category-description">
+                        See the forest AND the trees. Learn to understand complex interconnected systems, feedback
+                        loops,
+                        and emergent behaviors that define modern software architecture.
+                    </p>
+                </div>
+
+                <div class="projects-section">
+                    <h3 class="projects-title">🚀 Major Projects (2)</h3>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 1: System Architecture Analyzer</div>
+                        <div class="project-description">
+                            Reverse-engineer and document 5 major system architectures (Twitter, Netflix, Uber, etc.)
+                        </div>
+                        <ul class="project-features">
+                            <li>Complete architecture diagrams with all components</li>
+                            <li>Identify feedback loops and failure modes</li>
+                            <li>Bottleneck and scaling analysis</li>
+                            <li>Trade-off documentation (CAP theorem applications)</li>
+                            <li>Blog series with detailed breakdowns</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 2: Complex System Simulator</div>
+                        <div class="project-description">
+                            Build interactive simulations demonstrating systems thinking principles
+                        </div>
+                        <ul class="project-features">
+                            <li>Traffic flow simulation (emergent patterns)</li>
+                            <li>Load balancer behavior under different strategies</li>
+                            <li>Database replication and consistency models</li>
+                            <li>Microservices cascade failure scenarios</li>
+                            <li>Real-time parameter adjustment and visualization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="books-grid">
+                    <div class="book-card">
+                        <div class="book-week">Week 13-14</div>
+                        <div class="book-title">Thinking in Systems</div>
+                        <div class="book-author">by Donella H. Meadows</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Study Principles</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Map Systems</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Document</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Understanding stocks, flows, feedback loops, and leverage points in complex systems
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Systems Thinking for Software Architecture"<br>
+                                • Create causal loop diagrams for 10 systems<br>
+                                • Workshop: "Finding Leverage Points in Your Codebase"
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 15-16</div>
+                        <div class="book-title">The Fifth Discipline</div>
+                        <div class="book-author">by Peter Senge</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Read</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Apply to Teams</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Share</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Building learning organizations through systems thinking and team dynamics
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Learning Organizations in Tech Companies"<br>
+                                • Analyze your team/company as a system<br>
+                                • Present findings to leadership
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 17-18</div>
+                        <div class="book-title">An Introduction to General Systems Thinking</div>
+                        <div class="book-author">by Gerald M. Weinberg</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Learn Theory</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Build Simulations</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Teach</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Formal systems theory and its application to understanding complex behaviors
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog series: "Systems Theory for Engineers"<br>
+                                • Complete Complex System Simulator project<br>
+                                • Tech talk: "Why Systems Thinking Matters"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category D: Data Structures & Algorithms -->
+            <section class="category">
+                <div class="category-header">
+                    <span class="category-timeline">Weeks 19-24 (6 weeks)</span>
+                    <h2 class="category-title">⚡ Category D: Data Structures & Algorithms</h2>
+                    <p class="category-description">
+                        Build unshakeable CS fundamentals. Master the building blocks of efficient software through
+                        implementation, analysis, and real-world application of core algorithms and data structures.
+                    </p>
+                </div>
+
+                <div class="projects-section">
+                    <h3 class="projects-title">🚀 Major Projects (2)</h3>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 1: DSA Implementation Library</div>
+                        <div class="project-description">
+                            Implement all major data structures and algorithms from scratch in 2 languages
+                        </div>
+                        <ul class="project-features">
+                            <li>30+ data structures (arrays, trees, graphs, heaps, tries, etc.)</li>
+                            <li>50+ algorithms (sorting, searching, graph algorithms, DP)</li>
+                            <li>Comprehensive test suites for each implementation</li>
+                            <li>Performance benchmarking and complexity analysis</li>
+                            <li>Published as open-source library with documentation</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 2: LeetCode Mastery Challenge</div>
+                        <div class="project-description">
+                            Systematically solve 300+ problems with full documentation
+                        </div>
+                        <ul class="project-features">
+                            <li>100 Easy, 150 Medium, 50 Hard problems</li>
+                            <li>Documented approach, patterns, and learnings</li>
+                            <li>Multiple solutions per problem (brute force → optimal)</li>
+                            <li>Pattern recognition guide (sliding window, two pointers, etc.)</li>
+                            <li>Personal wiki of solution templates</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="books-grid">
+                    <div class="book-card">
+                        <div class="book-week">Week 19-20</div>
+                        <div class="book-title">Introduction to Algorithms (CLRS)</div>
+                        <div class="book-author">by Cormen, Leiserson, Rivest, Stein</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">25%</div>
+                                <div class="split-label">Read Theory</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">60%</div>
+                                <div class="split-label">Implement & Solve</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">15%</div>
+                                <div class="split-label">Document</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Rigorous mathematical foundation for algorithm design and analysis
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "CLRS Concepts Explained Simply"<br>
+                                • Implement 20 key algorithms from scratch<br>
+                                • Create visual explanations for complex algorithms
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 21</div>
+                        <div class="book-title">Grokking Algorithms</div>
+                        <div class="book-author">by Aditya Bhargava</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Study Visually</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Code & Practice</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Create Content</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Visual, intuitive understanding of fundamental algorithms and their applications
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Algorithm Intuition Series"<br>
+                                • Create animated algorithm visualizations<br>
+                                • Teach algorithms to non-technical friends
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 22-23</div>
+                        <div class="book-title">The Algorithm Design Manual</div>
+                        <div class="book-author">by Steven Skiena</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Read</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Solve & Implement</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Share</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Practical algorithm design strategies for real-world problems
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog series: "Real-World Algorithm Applications"<br>
+                                • Solve 50 problems from the "war stories"<br>
+                                • Create algorithm selection flowchart
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 24</div>
+                        <div class="book-title">Competitive Programming 3</div>
+                        <div class="book-author">by Steven & Felix Halim</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Study Techniques</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">70%</div>
+                                <div class="split-label">Compete & Solve</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">10%</div>
+                                <div class="split-label">Reflect</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Speed, accuracy, and pattern recognition in competitive problem-solving
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Participate in 4 coding contests (Codeforces, AtCoder)<br>
+                                • Blog: "Competitive Programming Patterns"<br>
+                                • Create problem set for practice
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category E: Scale & System Design -->
+            <section class="category">
+                <div class="category-header">
+                    <span class="category-timeline">Weeks 25-30 (6 weeks)</span>
+                    <h2 class="category-title">🏗️ Category E: Scale & System Design</h2>
+                    <p class="category-description">
+                        Design systems that serve millions. Master distributed systems, scalability patterns, and the
+                        art of making architectural trade-offs under real-world constraints.
+                    </p>
+                </div>
+
+                <div class="projects-section">
+                    <h3 class="projects-title">🚀 Major Projects (2)</h3>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 1: Build a Distributed Key-Value Store</div>
+                        <div class="project-description">
+                            Implement a production-grade distributed KV store with replication and consistency
+                        </div>
+                        <ul class="project-features">
+                            <li>Consistent hashing for data distribution</li>
+                            <li>Replication with configurable consistency levels</li>
+                            <li>Gossip protocol for node discovery</li>
+                            <li>Vector clocks for conflict resolution</li>
+                            <li>Comprehensive monitoring and metrics</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 2: System Design Portfolio</div>
+                        <div class="project-description">
+                            Create 10 comprehensive system design documents for popular services
+                        </div>
+                        <ul class="project-features">
+                            <li>URL Shortener, Twitter, Instagram, YouTube, Uber</li>
+                            <li>Complete architecture diagrams (HLD + LLD)</li>
+                            <li>Database schema and API contracts</li>
+                            <li>Scaling strategy and bottleneck analysis</li>
+                            <li>Cost estimation and trade-off documentation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="books-grid">
+                    <div class="book-card">
+                        <div class="book-week">Week 25-26</div>
+                        <div class="book-title">Designing Data-Intensive Applications</div>
+                        <div class="book-author">by Martin Kleppmann</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">35%</div>
+                                <div class="split-label">Deep Study</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Build Systems</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">15%</div>
+                                <div class="split-label">Document</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Understanding data systems: reliability, scalability, maintainability trade-offs
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog series: "DDIA Chapter Summaries with Code"<br>
+                                • Implement mini-versions of core concepts<br>
+                                • Tech talk: "Building Reliable Systems"
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 27-28</div>
+                        <div class="book-title">System Design Interview Vol 1 & 2</div>
+                        <div class="book-author">by Alex Xu</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">25%</div>
+                                <div class="split-label">Study Patterns</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">55%</div>
+                                <div class="split-label">Design & Mock</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Share Designs</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Structured approach to system design interviews and real-world architecture
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Complete 10 design docs in portfolio<br>
+                                • Blog: "System Design Interview Framework"<br>
+                                • Conduct 5 mock system design interviews
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 29-30</div>
+                        <div class="book-title">Understanding Distributed Systems</div>
+                        <div class="book-author">by Roberto Vitillo</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Learn Concepts</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Build Distributed App</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Write & Share</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Practical understanding of distributed systems challenges and solutions
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Distributed Systems Patterns Explained"<br>
+                                • Complete distributed KV store project<br>
+                                • Create educational content on CAP theorem
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category F: Code Quality & Architecture -->
+            <section class="category">
+                <div class="category-header">
+                    <span class="category-timeline">Weeks 31-36 (6 weeks)</span>
+                    <h2 class="category-title">✨ Category F: Code Quality & Architecture</h2>
+                    <p class="category-description">
+                        Write code that lasts decades. Master clean code principles, design patterns, and architectural
+                        patterns that make systems maintainable, testable, and enjoyable to work with.
+                    </p>
+                </div>
+
+                <div class="projects-section">
+                    <h3 class="projects-title">🚀 Major Projects (2)</h3>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 1: Legacy Code Refactoring Challenge</div>
+                        <div class="project-description">
+                            Take 3 messy open-source projects and refactor them using SOLID principles
+                        </div>
+                        <ul class="project-features">
+                            <li>Before/after code quality metrics</li>
+                            <li>Comprehensive test suite added (aim for 80%+ coverage)</li>
+                            <li>Apply appropriate design patterns</li>
+                            <li>Documentation of refactoring decisions</li>
+                            <li>Submit PRs to original projects</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 2: Build a Production-Ready Framework</div>
+                        <div class="project-description">
+                            Create an open-source framework demonstrating architectural excellence
+                        </div>
+                        <ul class="project-features">
+                            <li>Clean architecture with clear separation of concerns</li>
+                            <li>Extensive test coverage (unit, integration, e2e)</li>
+                            <li>Comprehensive documentation and examples</li>
+                            <li>CI/CD pipeline with quality gates</li>
+                            <li>Published to package registry with versioning</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="books-grid">
+                    <div class="book-card">
+                        <div class="book-week">Week 31-32</div>
+                        <div class="book-title">Clean Code</div>
+                        <div class="book-author">by Robert C. Martin</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">25%</div>
+                                <div class="split-label">Study Principles</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">60%</div>
+                                <div class="split-label">Refactor Code</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">15%</div>
+                                <div class="split-label">Review & Share</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Writing code that is readable, maintainable, and expresses intent clearly
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Clean Code Principles in [Your Language]"<br>
+                                • Code review 10 open-source PRs<br>
+                                • Create clean code checklist for teams
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 33</div>
+                        <div class="book-title">Design Patterns</div>
+                        <div class="book-author">by Gang of Four</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Learn Patterns</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Implement All 23</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Document</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Reusable solutions to common software design problems
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog series: "Design Patterns in Modern Code"<br>
+                                • Create pattern catalog with real examples<br>
+                                • Identify patterns in popular frameworks
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 34</div>
+                        <div class="book-title">Clean Architecture</div>
+                        <div class="book-author">by Robert C. Martin</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Study Architecture</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Build Framework</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Share</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Organizing code for independence of frameworks, UI, database, and external systems
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Clean Architecture in Practice"<br>
+                                • Refactor existing project to clean architecture<br>
+                                • Tech talk: "Why Architecture Matters"
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 35-36</div>
+                        <div class="book-title">The Pragmatic Programmer</div>
+                        <div class="book-author">by Andrew Hunt & David Thomas</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Read Tips</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Apply to Projects</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Document</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                100 practical tips for becoming a better, more effective programmer
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "My Top 20 Pragmatic Tips"<br>
+                                • Complete production-ready framework project<br>
+                                • Create team best practices document
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category G: Communication & Leadership -->
+            <section class="category">
+                <div class="category-header">
+                    <span class="category-timeline">Weeks 37-39 (3 weeks)</span>
+                    <h2 class="category-title">🗣️ Category G: Communication & Leadership</h2>
+                    <p class="category-description">
+                        Technical skills get you hired; communication skills get you promoted. Master the art of
+                        explaining complex ideas, writing technical documentation, and influencing without authority.
+                    </p>
+                </div>
+
+                <div class="projects-section">
+                    <h3 class="projects-title">🚀 Major Projects (2)</h3>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 1: Technical Writing Portfolio</div>
+                        <div class="project-description">
+                            Create 15 high-quality technical blog posts covering your learning journey
+                        </div>
+                        <ul class="project-features">
+                            <li>5 tutorial-style posts (teach concepts)</li>
+                            <li>5 deep-dive analysis posts (explore topics)</li>
+                            <li>5 case study posts (real-world applications)</li>
+                            <li>SEO optimization and clear structure</li>
+                            <li>Published on personal blog + dev.to/Medium</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 2: Public Speaking Series</div>
+                        <div class="project-description">
+                            Deliver technical presentations to build confidence and teaching skills
+                        </div>
+                        <ul class="project-features">
+                            <li>3 talks at local meetups or conferences</li>
+                            <li>5 recorded YouTube tutorials on key topics</li>
+                            <li>1 workshop or training session for peers</li>
+                            <li>Podcast or interview appearances (aim for 2-3)</li>
+                            <li>Gather feedback and iterate on presentation style</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="books-grid">
+                    <div class="book-card">
+                        <div class="book-week">Week 37</div>
+                        <div class="book-title">The Effective Engineer</div>
+                        <div class="book-author">by Edmond Lau</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Study Habits</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Implement Changes</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Share Learnings</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Maximizing leverage and impact through effective engineering practices
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Lessons in Engineering Effectiveness"<br>
+                                • Audit your own work for leverage opportunities<br>
+                                • Share findings with team
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 38</div>
+                        <div class="book-title">Crucial Conversations</div>
+                        <div class="book-author">by Patterson, Grenny, McMillan, Switzler</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Learn Framework</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Practice Daily</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Reflect & Write</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Tools for handling high-stakes conversations with clarity and empathy
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Crucial Conversations in Tech Teams"<br>
+                                • Role-play difficult scenarios<br>
+                                • Create conversation framework for team
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 39</div>
+                        <div class="book-title">Staff Engineer</div>
+                        <div class="book-author">by Will Larson</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">35%</div>
+                                <div class="split-label">Study Paths</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">45%</div>
+                                <div class="split-label">Build Portfolio</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Plan Career</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Understanding the path to staff+ engineering: archetypes, skills, and strategies
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "My Path to Staff Engineer"<br>
+                                • Complete technical writing portfolio<br>
+                                • Create 5-year career roadmap
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category H: Product & Business Thinking -->
+            <section class="category">
+                <div class="category-header">
+                    <span class="category-timeline">Weeks 40-42 (3 weeks)</span>
+                    <h2 class="category-title">💼 Category H: Product & Business Thinking</h2>
+                    <p class="category-description">
+                        Understand the why behind the what. Learn to think like a product manager and business leader
+                        to make better technical decisions that drive real value.
+                    </p>
+                </div>
+
+                <div class="projects-section">
+                    <h3 class="projects-title">🚀 Major Projects (2)</h3>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 1: Product Strategy Document</div>
+                        <div class="project-description">
+                            Create a comprehensive product strategy for a technical product/platform
+                        </div>
+                        <ul class="project-features">
+                            <li>Market analysis and competitive landscape</li>
+                            <li>User personas and problem validation</li>
+                            <li>Product roadmap with technical milestones</li>
+                            <li>Business model and revenue projections</li>
+                            <li>Success metrics and KPIs</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-name">Project 2: Complete Portfolio Website</div>
+                        <div class="project-description">
+                            Build a professional portfolio showcasing all 42 weeks of work
+                        </div>
+                        <ul class="project-features">
+                            <li>Project case studies with technical depth</li>
+                            <li>Blog integration with all written content</li>
+                            <li>Interactive demos of key projects</li>
+                            <li>Resume and career narrative</li>
+                            <li>Contact form and social links</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="books-grid">
+                    <div class="book-card">
+                        <div class="book-week">Week 40</div>
+                        <div class="book-title">The Lean Startup</div>
+                        <div class="book-author">by Eric Ries</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Learn Method</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Apply to Project</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Document</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Build-Measure-Learn cycle for rapid iteration and validated learning
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Lean Principles for Technical Products"<br>
+                                • Apply lean methodology to a side project<br>
+                                • Present learnings to team
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 41</div>
+                        <div class="book-title">Inspired</div>
+                        <div class="book-author">by Marty Cagan</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">30%</div>
+                                <div class="split-label">Study Product</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">50%</div>
+                                <div class="split-label">Create Strategy</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Write & Share</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                How great tech companies create products customers love
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Blog: "Product Thinking for Engineers"<br>
+                                • Complete product strategy document<br>
+                                • Analyze 3 successful tech products
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-week">Week 42</div>
+                        <div class="book-title">Zero to One</div>
+                        <div class="book-author">by Peter Thiel</div>
+
+                        <div class="learning-split">
+                            <div class="split-item">
+                                <div class="split-percentage">35%</div>
+                                <div class="split-label">Read & Reflect</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">45%</div>
+                                <div class="split-label">Finalize Portfolio</div>
+                            </div>
+                            <div class="split-item">
+                                <div class="split-percentage">20%</div>
+                                <div class="split-label">Celebrate & Share</div>
+                            </div>
+                        </div>
+
+                        <div class="book-principle">
+                            <div class="principle-label">Key Principle</div>
+                            <div class="principle-text">
+                                Creating monopolistic advantage through innovation and contrarian thinking
+                            </div>
+                        </div>
+
+                        <div class="teaching-activities">
+                            <div class="teaching-title">📝 Teaching Activities:</div>
+                            <div class="teaching-list">
+                                • Final blog: "42 Weeks of Transformation: Key Lessons"<br>
+                                • Launch complete portfolio website<br>
+                                • Share journey on social media and communities
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final CTA Section -->
+            <section class="cta-section">
+                <div class="container">
+                    <h2 class="cta-title">Your Transformation Starts Now</h2>
+                    <p
+                        style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; max-width: 800px; margin-left: auto; margin-right: auto;">
+                        42 weeks. 50+ projects. 25+ blog posts. 500+ problems solved. One world-class engineer.
+                        <br><br>
+                        This isn't just a reading list—it's a complete transformation blueprint that combines learning,
+                        building, and teaching to create compound expertise that few professionals achieve.
+                    </p>
+
+                    <div
+                        style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: 20px; margin: 2rem auto; max-width: 700px; border: 1px solid rgba(255,255,255,0.2);">
+                        <h3 style="margin-bottom: 1.5rem; color: #a8edea; font-size: 1.5rem;">Week 1 Action Plan:</h3>
+                        <div style="text-align: left; color: white; line-height: 2;">
+                            <p>✅ Acquire "Thinking, Fast and Slow"</p>
+                            <p>✅ Set up learning journal and tracking system</p>
+                            <p>✅ Block 3-4 hours daily in calendar</p>
+                            <p>✅ Create GitHub repository for all projects</p>
+                            <p>✅ Set up blog (dev.to or personal site)</p>
+                            <p>✅ Join developer communities (Reddit, Discord)</p>
+                            <p>✅ Find accountability partner</p>
+                            <p>✅ Share commitment publicly</p>
+                        </div>
+                    </div>
+
+                    <div style="margin: 3rem 0;">
+                        <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: #a8edea;">
+                            Timeline Options:
+                        </div>
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; max-width: 900px; margin: 0 auto;">
+                            <div
+                                style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2);">
+                                <div style="font-size: 2rem; font-weight: 900; color: #a8edea;">42 Weeks</div>
+                                <div style="opacity: 0.9; margin-top: 0.5rem;">Full-time dedication</div>
+                                <div style="opacity: 0.8; margin-top: 0.5rem; font-size: 0.9rem;">25-30 hrs/week</div>
+                            </div>
+                            <div
+                                style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2);">
+                                <div style="font-size: 2rem; font-weight: 900; color: #a8edea;">18-24 Months</div>
+                                <div style="opacity: 0.9; margin-top: 0.5rem;">Balanced approach</div>
+                                <div style="opacity: 0.8; margin-top: 0.5rem; font-size: 0.9rem;">15-20 hrs/week</div>
+                            </div>
+                            <div
+                                style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2);">
+                                <div style="font-size: 2rem; font-weight: 900; color: #a8edea;">2-3 Years</div>
+                                <div style="opacity: 0.9; margin-top: 0.5rem;">Sustainable pace</div>
+                                <div style="opacity: 0.8; margin-top: 0.5rem; font-size: 0.9rem;">10-12 hrs/week</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#hero" class="cta-button" style="margin-top: 2rem;">Begin Your Journey</a>
+
+                    <p style="margin-top: 3rem; font-size: 1.2rem; font-weight: 600; color: #a8edea;">
+                        "The best time to start was yesterday. The second best time is now."
+                    </p>
+
+                    <p style="margin-top: 2rem; font-size: 1rem; opacity: 0.8;">
+                        Remember: 30% Read • 50% Build • 20% Teach
+                        <br>
+                        This is the formula for true mastery.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Fade in elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all category sections and book cards
+        document.querySelectorAll('.category, .book-card, .project-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Add hover effect to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateX(10px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateX(10px) scale(1)';
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' && e.ctrlKey) {
+                window.scrollBy({ top: 500, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' && e.ctrlKey) {
+                window.scrollBy({ top: -500, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+
+</html>
