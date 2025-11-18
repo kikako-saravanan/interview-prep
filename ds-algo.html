@@ -543,6 +543,30 @@
             box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
         }
 
+        .reset-button {
+            width: 100%;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background: linear-gradient(135deg, #ff0080, #ef4444);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .reset-button:hover {
+            background: linear-gradient(135deg, #ef4444, #ff0080);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 0, 128, 0.3);
+        }
+
+        .reset-button:active {
+            transform: translateY(0);
+        }
+
         /* Responsive design */
         @media (max-width: 768px) {
             .timeline::before {
@@ -6307,6 +6331,7 @@
             <div>Problems: <span id="problemsCompleted">0</span>/336+</div>
             <div>Mocks: <span id="mocksCompleted">0</span>/38+</div>
         </div>
+        <button class="reset-button" onclick="resetProgress()">🔄 Reset Progress</button>
     </div>
 
     <!-- Floating action button -->
@@ -6364,20 +6389,43 @@
         // Simulate progress tracking
         function updateProgress() {
             const today = new Date();
-            const startDate = new Date('2025-11-01');
-            const daysDiff = Math.max(0, Math.floor((today - startDate) / (1000 * 60 * 60 * 24)));
+            let startDate = localStorage.getItem('startDate');
+
+            if (!startDate) {
+                startDate = '2025-11-01';
+                localStorage.setItem('startDate', startDate);
+            }
+
+            const start = new Date(startDate);
+            const daysDiff = Math.max(0, Math.floor((today - start) / (1000 * 60 * 60 * 24)));
             const currentDay = Math.min(daysDiff + 1, 168);
 
             document.getElementById('currentDay').textContent = currentDay;
             document.getElementById('progressFill').style.width = (currentDay / 168 * 100) + '%';
 
-            // Simulate problems completed (2 problems per day average)
-            const problemsCompleted = Math.min(currentDay * 2, 336);
+            // Get stored or calculate problems completed
+            let problemsCompleted = localStorage.getItem('problemsCompleted');
+            if (!problemsCompleted) {
+                problemsCompleted = Math.min(currentDay * 2, 336);
+            }
             document.getElementById('problemsCompleted').textContent = problemsCompleted;
 
-            // Simulate mocks completed (starts from day 70)
-            const mocksCompleted = Math.max(0, Math.floor((currentDay - 70) / 4));
+            // Get stored or calculate mocks completed
+            let mocksCompleted = localStorage.getItem('mocksCompleted');
+            if (!mocksCompleted) {
+                mocksCompleted = Math.max(0, Math.floor((currentDay - 70) / 4));
+            }
             document.getElementById('mocksCompleted').textContent = Math.min(mocksCompleted, 38);
+        }
+        // Reset progress
+        function resetProgress() {
+            if (confirm('Are you sure you want to reset your progress? This action cannot be undone.')) {
+                localStorage.setItem('startDate', new Date().toISOString());
+                localStorage.setItem('problemsCompleted', '0');
+                localStorage.setItem('mocksCompleted', '0');
+                updateProgress();
+                alert('Progress reset successfully! Your journey begins today! 🚀');
+            }
         }
 
         // Add smooth scrolling and animations
